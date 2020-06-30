@@ -1,0 +1,91 @@
+<div id="textsection">
+  <div class="simpletext">
+    <h1> {{ section.settings.text-box }} </h1>
+    <h2> {{ section.settings.text }} </h2>
+    <div class="z-grid z-grid--center">
+        {% for block in section.blocks %}
+         {% unless block.type == 'image' %}{% continue %}{% endunless %}
+          <div class="z-grid__cell 1/4 1/2--thumb grid__cell">
+            {{ block.settings.title }}
+            {{ block.settings.subtitle}}
+            <img src="{{ block.settings.image | img_url : '250x' }}">
+          </div>
+        {% endfor %}
+      <div class="3/4 1/2--thumb grid__cell"></div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Text Box",
+    "settings": [
+      {
+        "id": "text-box",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+      {
+          "type":      "range",
+          "id":        "Number_items_desktop",
+          "min":       3,
+          "max":        5,
+          "step":       1,
+          "unit":       "pc",
+          "label":     "number of items desktop",
+          "default":   3
+      },
+      {
+          "type":      "range",
+          "id":        "Number_items_mobile",
+          "min":       1,
+          "max":        3 ,
+          "step":       1,
+          "unit":       "pc",
+          "label":     "number of items mobile",
+          "default":   2
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "subtitle"
+          }
+        ]
+      }
+    ],
+    "presets": [
+     {
+       "category": "Reassurance",
+       "name": "Reassurance"
+     }
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
