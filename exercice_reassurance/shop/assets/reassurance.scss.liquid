@@ -1,0 +1,109 @@
+.reassurance__image {
+  height: 100px;
+}
+.reassurance__title {
+  color:red;
+  margin-bottom: 20px;
+}
+
+.reassurance__text {
+  margin-bottom: 20px;
+}
+
+// left-right.liquid
+
+
+.left-right__cta {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding : 0 20px;
+  margin-bottom: 10px;
+  color: white;
+  background-color: black;
+  font-family: "Montserrat";
+  border: 2px black solid;
+}
+
+.left-right__cta:hover {
+  background-color: white;
+  color: black;
+}
+
+.container--small {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.container {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.right__image {
+  float: right;
+  width: 100%;
+}
+
+.left__image {
+  width: 100%;
+}
+
+.left-right__title {
+  font-weight: bold;
+}
+
+.z-grid--center2 {
+  display: flex;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-right__video {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.left-right__video iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+@media(max-width : 500px) {
+
+  .z-grid--center2 {
+    display: block;
+  }
+
+  .z-grid__cell {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .left-right__title {
+    margin-top: 10px;
+  }
+
+  .left-right__title,
+  .left-right__subtitle{
+    text-align: center;
+  }
+
+  .left-right__cta {
+    width: 100%;
+    text-align: center;
+
+  }
+
+}

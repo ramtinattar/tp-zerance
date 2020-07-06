@@ -1,0 +1,110 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="left-right">
+  <div class="left-right  {{ section.settings.container_size}}">
+      <div class="z-grid z-grid--center z-grid--center2">
+        {% if section.settings.collection_sort == true %}
+          <div class="1/2 z-grid__cell">
+            {% if section.settings.video_url == blank %}
+              <img class="left-right__image left__image" src="{{ section.settings.image | img_url: '450x' }}">
+            {% else %}
+            <div class="left-right__video">
+              <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="450" height="450" frameborder="0" allowfullscreen></iframe>
+            </div>
+            {% endif %}
+            </div>
+        {% endif %}
+        <div class="1/2 z-grid__cell contents">
+          <div>
+            <h3 class="left-right__title">{{ section.settings.text-box }}</h3>
+            <div><p class="left-right__subtitle">{{ section.settings.subtitle}}<p></div>
+            <a class="left-right__cta" href="{{ section.settings.url }}">{{ section.settings.cta}}</a>
+          </div>
+        </div>
+        {% if section.settings.collection_sort == false %}
+          <div class="1/2 z-grid__cell">
+            {% if section.settings.video_url == blank %}
+            <img class="left-right__image right__image" src="{{ section.settings.image | img_url: '450x' }}">
+            {% else %}
+            <div class="left-right__video">
+              <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="450" height="450" frameborder="0" allowfullscreen></iframe>
+            </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "right and left box",
+    "settings": [
+
+      {
+        "type": "select",
+        "id": "container_size",
+        "options": [
+        { "value" : "container--small", "label": "Small container"},
+        { "value" : "container", "label": "Normal container"},
+        { "value" : "container--full", "label": "Full container"}
+        ],
+        "label": "Container Size"
+      },
+      {
+         "type": "checkbox",
+         "id": "collection_sort",
+         "default": true,
+         "label": "click if you want image and texts change their place (desktop)"
+
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "add your image"
+      },
+      {
+        "id": "video_url",
+        "type": "video_url",
+        "label": "If you want a photo, let this to be empty",
+        "accept": ["youtube", "vimeo"],
+        "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "placeholder": "url"
+      },
+      {
+        "id": "text-box",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "subtitle",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+      {
+        "id": "cta",
+        "type": "text",
+        "label": "Button text",
+        "default": "<p>Click Here</p>"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "add your url"
+      }
+
+    ],
+    "presets": [
+     {
+       "category": "Image with text",
+       "name": "right and left box"
+     }
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
