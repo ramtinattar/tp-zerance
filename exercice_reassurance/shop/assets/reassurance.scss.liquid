@@ -2,7 +2,6 @@
   height: 100px;
 }
 .reassurance__title {
-  color:red;
   margin-bottom: 20px;
 }
 
@@ -23,6 +22,7 @@
   background-color: black;
   font-family: "Montserrat";
   border: 2px black solid;
+  outline: none;
 }
 
 .left-right__cta:hover {
@@ -84,7 +84,8 @@
     display: block;
   }
 
-  .z-grid__cell {
+  .z-grid__cell2,
+  .contents {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -106,4 +107,83 @@
 
   }
 
+}
+
+// banner.liquid
+
+.banner__video {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.banner__video iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.banner__image {
+  width: 100%;
+}
+
+.banner__content {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  left: 10%;
+  color: white;
+  font-family: "Montserrat";
+}
+
+h1:not(.hero__title).banner__title {
+  color:white;
+  font-size: 70px;
+  margin-bottom: -30px;
+}
+
+.banner__cta {
+  padding: 5px 20px;
+  background-color: white;
+  outline: none;
+}
+
+.prev_arrow {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  left: 3%;
+  font-size: 30px;
+  outline: none;
+}
+
+.next_arrow {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  right: 3%;
+  font-size: 30px;
+  outline: none;
+}
+
+.arrows--top .arrow{
+  top: 5%;
+  transform: translateY(5%);
+}
+
+.arrows--middle .arrow{
+  top: 50%;
+  transform: translateY(50%);
+}
+
+.arrows--bottom .arrow{
+  bottom: 0%;
+  top:unset;
+}
+
+.slick-dots {
+  outline: none;
 }

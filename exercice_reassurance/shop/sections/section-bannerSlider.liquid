@@ -1,0 +1,74 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="section-bannerSlider">
+  <div data-bannerSlider class="section-bannerSlider" id="le-studio" >
+      {% for block in section.blocks %}
+        <div class="section-bannerSlider__relative" >
+          <div class="section-bannerSlider__imageBox">
+          <img class="section-bannerSlider__image" src="{{ block.settings.banner | img_url : '850x' }}">
+          </div>
+          <div class="section-bannerSlider__content">
+            <p class="section-bannerSlider__paragraph">{{ block.settings.paragraph1 }}<p>
+            <h3 class="section-bannerSlider__title">{{ block.settings.title }}</h3>
+            <p class="section-bannerSlider__paragraph">{{ block.settings.paragraph2 }}<p>
+            <a class="section-bannerSlider__cta" href="{{ block.settings.url }}">{{ block.settings.cta }}</a>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</section>
+{% schema %}
+ {
+   "name": "banner section box",
+   "blocks": [
+      {
+        "type": "image",
+        "name": "image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "banner",
+            "label": "banner"
+          },
+          {
+            "id": "paragraph1",
+            "type": "richtext",
+            "label": "Add custom text below",
+            "default": "<p>Add your text here</p>"
+          },
+          {
+            "id": "title",
+            "type": "text",
+            "label": "title",
+            "default": "Title"
+          },
+          {
+            "id": "paragraph2",
+            "type": "richtext",
+            "label": "Add custom text below",
+            "default": "<p>Add your text here</p>"
+          },
+          {
+            "id": "cta",
+            "type": "richtext",
+            "label": "Button text",
+            "default": "<p>Click Here</p>"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "add your url"
+          }
+        ]
+      }
+   ],
+   "presets": [
+      {
+        "category": "zerance site",
+        "name": "Section banner"
+      }
+   ]
+ }
+{% endschema %}
+
+{% javascript %}
+  $('.single-item').slick();
+{% endjavascript %}

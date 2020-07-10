@@ -2,7 +2,7 @@
   <div class="left-right  {{ section.settings.container_size}}">
       <div class="z-grid z-grid--center z-grid--center2">
         {% if section.settings.collection_sort == true %}
-          <div class="1/2 z-grid__cell">
+          <div class="1/2 z-grid__cell z-grid__cell2">
             {% if section.settings.video_url == blank %}
               <img class="left-right__image left__image" src="{{ section.settings.image | img_url: '450x' }}">
             {% else %}

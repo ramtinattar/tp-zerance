@@ -1,0 +1,36 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="section-header">
+  <div class="section-header">
+    <div class="section-header__imageBox">
+      <a href="{{ section.settings.url }}"><img class="section-header__image" src="{{ section.settings.image | img_url : '250x' }}"></a>
+    </div>
+    <div class="section-header__menu">
+      {% assign menu = linklists[section.settings.main_nav] %}
+      {% for link in menu.links %}
+      <a href="{{link.url}}">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "section-header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "image"
+      },
+      {
+         "type": "link_list",
+         "id": "main_nav",
+         "label": "Main navigation"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "url for logo"
+      }
+    ]
+  }
+{% endschema %}

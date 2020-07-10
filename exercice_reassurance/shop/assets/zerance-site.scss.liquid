@@ -1,0 +1,242 @@
+// section-header
+
+.section-header {
+  padding: 10px 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-header__image {
+  height: 100px;
+  width: 190px;
+  margin-top: 15px;
+}
+
+.section-header__menu {
+  font-family: "Montserrat";
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.section-header__menu a {
+  margin-left: 40px;
+}
+
+.section-header__menu a:hover {
+  color: #ffcd1a;
+}
+
+@media(max-width : 800px) {
+  .section-header__menu {
+    display: none;
+  }
+}
+
+// section-bannerHero
+
+.section-bannerHero {
+  padding: 0px 10px 0px 10px;
+}
+
+.section-bannerHero__paragraph {
+  font-size: 1.65rem;
+  margin-bottom: 40px;
+}
+
+.section-bannerHero__title {
+  // margin-bottom: 250px;
+  font-size: 3rem;
+}
+
+.section-bannerHero__title strong {
+  background-image: url("https://cdn.shopify.com/s/files/1/0072/0561/7711/files/Calque_14.png?8187");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 190px;
+}
+
+// section-logos
+
+.section-logos {
+  background-color: black;
+  padding: 90px 70px 90px 70px;
+}
+
+h2:not(.hero__title).section-logos__title {
+  color: white;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.section-logos__image {
+  height: 78px;
+  width: 155px;
+  margin-top: 40px;
+}
+
+.section-logos__ctaBox {
+  margin-top: 50px;
+}
+
+.section-logos__cta {
+  color: white;
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.section-logos__cta:hover {
+  color: white;
+}
+
+.section-logos__cta strong {
+  background-image: url("https://cdn.shopify.com/s/files/1/0072/0561/7711/files/Calque_14.png?8187");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 80px;
+}
+
+@media(max-width : 1023px) {
+  .section-logos__image {
+    height: 36px;
+    width: 73px;
+  }
+}
+
+// section-bannerSlider
+
+.section-bannerSlider {
+  margin-top: -115px;
+}
+
+.section-bannerSlider__imageBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-bannerSlider__image {
+    height: 580px;
+}
+
+.section-bannerSlider__content {
+  height: 300px;
+  width: 300px;
+  background-color: white;
+  position: absolute;
+  text-align: center;
+  outline: none;
+  top: 50%;
+  right: 10%;
+  transform: translate(-10%, -50%);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.section-bannerSlider__relative {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  position: relative;
+}
+
+.section-bannerSlider__title {
+  font-family: "Montserrat";
+}
+
+.section-bannerSlider__cta {
+  font-weight: bold;
+  outline: none;
+  font-family: "Montserrat";
+}
+
+.section-bannerSlider__cta strong {
+  background-image: url("https://cdn.shopify.com/s/files/1/0072/0561/7711/files/Calque_14.png?8187");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 60px;
+}
+
+.right_arrow {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  right: 10%;
+  font-size: 80px;
+  outline: none;
+  top: 50%;
+  transform: translate(-10%, -50%);
+  color: black;
+}
+
+.right_arrow:hover {
+  color: #ffcd1a;
+}
+
+@media(max-width : 767px) {
+  .section-bannerSlider {
+    margin-top: -70px;
+  }
+
+}
+
+@media(max-width : 513px) {
+
+  .section-bannerSlider__image {
+      height: 400px;
+  }
+
+  .section-bannerSlider__content {
+    height: 200px;
+    width: 200px;
+    right: 8%;
+    transform: translate(-8%, -50%);
+  }
+
+  body, input, textarea, button, select {
+    font-size: 10px;
+  }
+
+  .right_arrow {
+    right: 10%;
+    font-size: 40px;
+    transform: translate(-10%, -50%);
+  }
+}
+
+// section-infinitieText
+
+.section-infinitieText {
+  height:91px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #ffcd1a;
+  margin-top: -90px;
+}
+
+.section-infinitieText__paragraphBox {
+  width: 200%;
+  animation: marquee 20s linear infinite;
+  position: relative;
+}
+
+.section-infinitieText__paragraph {
+  line-height: 91px;
+}
+
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+
+@media(max-width : 513px) {
+
+  .section-infinitieText {
+    height:61px;
+  }
+
+  .section-infinitieText__paragraph {
+    line-height: 61px;
+  }
+
+}

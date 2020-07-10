@@ -1,0 +1,27 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="section-infinitieText">
+  <div class="section-infinitieText" id="contact">
+    <div class="section-infinitieText__paragraphBox">
+      <h3 class="section-infinitieText__paragraph">{{ section.settings.paragraph }}</h3>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "infinitieText box",
+    "settings": [
+      {
+        "id": "paragraph",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+    ],
+    "presets": [
+      {
+        "category": "zerance site",
+        "name": "section infinitieText"
+      }
+    ]
+  }
+{% endschema %}

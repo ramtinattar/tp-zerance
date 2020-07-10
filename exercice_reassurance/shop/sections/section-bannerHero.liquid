@@ -1,0 +1,31 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="section-bannerHero">
+  <div class="section-bannerHero">
+    <div class="section-bannerHero__paragraph z-grid--center">{{ section.settings.title }}</div>
+    <h2 class="section-bannerHero__title z-grid--center">{{ section.settings.paragraph }}</h2>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "bannerHero box",
+    "settings": [
+      {
+        "id": "paragraph",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+      {
+        "id": "title",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+    ],
+    "presets": [
+      {
+        "category": "zerance site",
+        "name": "section bannerHero"
+      }
+    ]
+  }
+{% endschema %}

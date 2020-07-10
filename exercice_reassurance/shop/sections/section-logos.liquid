@@ -1,0 +1,81 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="section-logos">
+  <div class="section-logos" id="nos-clients">
+    <h2 class="section-logos__title align-center">{{ section.settings.text }}</h2>
+    <div class="z-grid z-grid--center">
+      {% for block in section.blocks %}
+      <div class="z-grid__cell 1/{{ section.settings.Number_items_desktop }}--desk 1/{{ section.settings.Number_items_mobile }} grid__cell">
+        <div class="align-center">
+          <img class="section-logos__image" src="{{ block.settings.image | img_url : '250x' }}">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="section-logos__ctaBox align-center">
+      <a class="section-logos__cta" href="{{ section.settings.url }}">{{ section.settings.cta }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "logos box",
+    "settings": [
+      {
+        "id": "text",
+        "type": "text",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+      {
+        "type":      "range",
+        "id":        "Number_items_desktop",
+        "min":       3,
+        "max":        5,
+        "step":       1,
+        "unit":       "pc",
+        "label":     "number of items desktop",
+        "default":   5
+      },
+      {
+        "type":      "range",
+        "id":        "Number_items_mobile",
+        "min":       1,
+        "max":        3,
+        "step":       1,
+        "unit":       "pc",
+        "label":     "number of items mobile",
+        "default":   3
+      },
+      {
+        "id": "cta",
+        "type": "richtext",
+        "label": "Button text",
+        "default": "<p>Click Here</p>"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "add your url"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "zerance site",
+        "name": "section logos"
+      }
+    ]
+  }
+{% endschema %}
