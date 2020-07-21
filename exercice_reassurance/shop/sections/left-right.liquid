@@ -4,7 +4,7 @@
         {% if section.settings.collection_sort == true %}
           <div class="1/2 z-grid__cell z-grid__cell2">
             {% if section.settings.video_url == blank %}
-              <img class="left-right__image left__image" src="{{ section.settings.image | img_url: '450x' }}">
+              <img class="left-right__image left-right__image--left" src="{{ section.settings.image | img_url: '450x' }}" alt="{{ section.settings.image.alt | escape }}">
             {% else %}
             <div class="left-right__video">
               <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="450" height="450" frameborder="0" allowfullscreen></iframe>
@@ -12,17 +12,23 @@
             {% endif %}
             </div>
         {% endif %}
-        <div class="1/2 z-grid__cell contents">
+        <div class="left-right__contents 1/2 z-grid__cell">
           <div>
-            <h3 class="left-right__title">{{ section.settings.text-box }}</h3>
+            {% unless section.settings.text-box == blank %}
+            <{{ section.settings.title_hn }} class="left-right__title">{{ section.settings.text-box }}</{{ section.settings.title_hn }}>
+            {% endunless %}
+            {% unless section.settings.subtitle == blank %}
             <div><p class="left-right__subtitle">{{ section.settings.subtitle}}<p></div>
+            {% endunless %}
+            {% unless section.settings.cta == blank %}
             <a class="left-right__cta" href="{{ section.settings.url }}">{{ section.settings.cta}}</a>
+            {% endunless %}
           </div>
         </div>
         {% if section.settings.collection_sort == false %}
           <div class="1/2 z-grid__cell">
             {% if section.settings.video_url == blank %}
-            <img class="left-right__image right__image" src="{{ section.settings.image | img_url: '450x' }}">
+            <img class="left-right__image left-right__image--right" src="{{ section.settings.image | img_url: '450x' }}" alt="{{ section.settings.image.alt | escape }}">
             {% else %}
             <div class="left-right__video">
               <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="450" height="450" frameborder="0" allowfullscreen></iframe>
@@ -33,6 +39,12 @@
       </div>
   </div>
 </section>
+
+
+
+-> proteger toutes les sorties liquid
+-> bien update le code en BEM avec les modifier ; ex : left-right__image--right
+
 {% schema %}
   {
     "name": "right and left box",
@@ -73,6 +85,38 @@
         "type": "text",
         "label": "Heading",
         "default": "Title"
+      },
+      {
+        "type": "select",
+        "id": "title_hn",
+        "label": "title balisage",
+        "default": "h2",
+        "options": [
+          {
+            "value": "h1",
+            "label": "h1"
+          },
+          {
+            "value": "h2",
+            "label": "h2"
+          },
+          {
+            "value": "h3",
+            "label": "h3"
+          },
+          {
+            "value": "h4",
+            "label": "h4"
+          },
+          {
+            "value": "h5",
+            "label": "h5"
+          },
+          {
+            "value": "h6",
+            "label": "h6"
+          }
+        ]
       },
       {
         "id": "subtitle",

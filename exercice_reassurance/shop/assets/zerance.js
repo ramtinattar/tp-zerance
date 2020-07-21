@@ -5,14 +5,12 @@ theme.banner = new function() {
   // init default settings
   var settings = {
     bannerSelector : '[data-banner]',
-    // autoplay : true,
-    // autoplaySpeed : 2000,
+    autoplay : true,
+    autoplaySpeed : 2000,
     arrows: false,
-    // dots: false,
+    dots: false,
     dotsClass: 'slick-dots'
     };
-
-
 
   function banner() {
     if ($(settings.bannerSelector).data("banner-arrow") == true) {
@@ -24,8 +22,8 @@ theme.banner = new function() {
     }
 
     $(settings.bannerSelector).slick({
-        // autoplay: settings.autoplay,
-        // autoplaySpeed: settings.autoplaySpeed,
+        autoplay: settings.autoplay,
+        autoplaySpeed: settings.autoplaySpeed,
         prevArrow:'<button type="button" class="prev_arrow arrow">￩</button>',
         nextArrow:'<button type="button" class="next_arrow arrow">￫</button>',
         arrows: settings.arrows,
@@ -38,3 +36,14 @@ theme.banner = new function() {
 }
 
 var banner = new theme.banner();
+
+//------------------------------
+
+var form = $('form[action="/cart/add"]');
+
+$(form).find('[data-variant-id]').on('click', function() {
+  var id = $(this).data('variant-id');
+  console.log(id);
+  $(form).find('input[name="id"]').val(id);
+  $(this).parent().parent().find(".featured-collection__hidden--btn").css("background-color", "black");
+});

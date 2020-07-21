@@ -1,0 +1,86 @@
+<section id="section-{{ section.id }}" class="section" data-section-id="{{ section.id }}" data-section-type="featured-collection">
+  <div class="featured-collection z-grid z-grid--center">
+      {%- assign collection = collections[section.settings.collection] -%}
+      {% for product in collection.products limit: 6 %}
+      <div class="z-grid__cell 1/{{ section.settings.number_items_desktop }}--desk 1/{{ section.settings.number_items_mobile }} grid__cell">
+        <a href="{{ product.url | within: collection }}" class="featured-collection__item">
+          <div class="align-center featured-collection__section">
+              <img class="featured-collection__image" src="{{ product.images[0] | img_url: '300x' }}"  alt="{{ product.images[0].alt }}" >
+              <div class="featured-collection__hidden--hover">
+                <img class="featured-collection__hidden--image" src="{{ product.images[1] | img_url: '300x' }}" alt="{{ product.images.last.alt | escape }}" />
+                <p class="featured-collection__hidden--paragraph">Choose the right size for you</p>
+                <form class="featured-collection__hidden--form" method="post" action="/cart/add">
+                  <input name="id" value="{{ product.selected_or_first_available_variant.id }}" type="hidden" />
+                  {% for variant in product.variants %}
+                    <label class="featured-collection__hidden--container">
+                      {% if variant.available == true %}
+                        <input class="featured-collection__hidden--checkmark featured-collection__hidden--checkmark1" type="radio" name="group1" required="required" value="{{ variant.id }}" data-variant-id="{{ variant.id }}" />
+                        <div class="featured-collection__hidden--checkmark featured-collection__hidden--checkmark1">
+                          {{ variant.title | escape}}
+                        </div>
+                      {% endif %}
+                      {% if variant.available == false %}
+                        <input class="featured-collection__hidden--disabled-input" type="radio" name="group2" disabled="disabled" value="{{ variant.id }}" data-variant-id="{{ variant.id }}" />
+                        <div class="featured-collection__hidden--checkmark featured-collection__hidden--checkmark2">
+                          {{ variant.title | escape}}
+                          <div class="featured-collection__hidden--disabled-checkmark"></div>
+                        </div>
+                      {% endif %}
+                    </label>
+                  {% endfor %}
+                  <input class="btn featured-collection__hidden--btn" type="submit" name="submit"  value="Add to cart" id="btn" />
+                </form>
+              </div>
+              <p>{{ product.title | escape }}</p>
+              <span>{{ product.price | money }}</span>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+  </div>
+</section>
+
+<!-- -> proteger titre
+-> mettre au norme BEM : disabled-input input input--disabled
+-> tous les feature-collection -> featured-collection
+-> simplifier la structure html
+-->
+
+{% schema %}
+{
+  "name": "featured collection",
+  "settings": [
+  {
+    "type": "collection",
+    "id": "collection",
+    "label": "collection"
+  },
+  {
+    "type": "range",
+    "id": "number_items_desktop",
+    "min": 2,
+    "max": 5,
+    "step": 1,
+    "unit": "pc",
+    "label": "Number items desktop",
+    "default": 3
+  },
+  {
+    "type": "range",
+    "id": "number_items_mobile",
+    "min": 1,
+    "max": 3,
+    "step": 1,
+    "unit": "pc",
+    "label": "Number items mobile",
+    "default": 1
+  }
+  ],
+  "presets": [
+  {
+    "category": "featured collection",
+    "name": "featured collection"
+  }
+  ]
+}
+{% endschema %}

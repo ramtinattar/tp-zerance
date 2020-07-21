@@ -2,23 +2,32 @@
   <div data-banner {% if section.settings.show_arrows == true %} data-banner-arrow="true" {% endif %} {% if section.settings.show_dots == true %} data-banner-dots="true" {% endif %}
   class="banner {{ section.settings.arrows_place }}">
     {% for block in section.blocks %}
-    <div class="relative">
-      {% if block.settings.video_url == blank %}
-        <img class="banner__image" src="{{ block.settings.banner | img_url : '1050x' }}">
+      <div class="relative">
+        {% if block.settings.video_url == blank %}
+          <img class="banner__image" src="{{ block.settings.banner | img_url : '1050x' }}" alt="{{ block.settings.banner.alt }}">
         {% else %}
-        <div class="banner__video">
-          <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?rel=0&showinfo=0&vq=720&autoplay=1" width="450" height="450" frameborder="0" allowfullscreen></iframe>
-        </div>
+          <div class="banner__video">
+            <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?rel=0&showinfo=0&vq=720&autoplay=1" width="450" height="450" frameborder="0" allowfullscreen></iframe>
+          </div>
         {% endif %}
-      <div class="banner__content">
-        <h1 class="banner__title">{{ block.settings.title }}</h1>
-        <p class="banner__paragraph">{{ block.settings.paragraph }}<p>
-        <a class="banner__cta" href="{{ block.settings.url }}">{{ block.settings.cta }}</a>
+        <div class="banner__content">
+          {% unless block.settings.title == blank %}
+            <{{ block.settings.title_hn }} class="banner__title">{{ block.settings.title }}</{{ block.settings.title_hn }}>
+          {% endunless %}
+          {% unless block.settings.paragraph == blank %}
+            <p class="banner__paragraph">{{ block.settings.paragraph }}<p>
+          {% endunless %}
+          {% unless block.settings.cta == blank %}
+            <a class="banner__cta" href="{{ block.settings.url }}">{{ block.settings.cta }}</a>
+          {% endunless %}
+        </div>
       </div>
-    </div>
     {% endfor %}
   </div>
 </section>
+
+-> proteger les entres
+-> proposer au client un balisage dynamique (sur toutes les sections)
 
 {% schema %}
  {
@@ -71,6 +80,38 @@
             "type": "text",
             "label": "title",
             "default": "Title"
+          },
+          {
+            "type": "select",
+            "id": "title_hn",
+            "label": "title balisage",
+            "default": "h2",
+            "options": [
+              {
+                "value": "h1",
+                "label": "h1"
+              },
+              {
+                "value": "h2",
+                "label": "h2"
+              },
+              {
+                "value": "h3",
+                "label": "h3"
+              },
+              {
+                "value": "h4",
+                "label": "h4"
+              },
+              {
+                "value": "h5",
+                "label": "h5"
+              },
+              {
+                "value": "h6",
+                "label": "h6"
+              }
+            ]
           },
           {
             "id": "paragraph",
